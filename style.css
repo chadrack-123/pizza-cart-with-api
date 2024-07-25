@@ -428,3 +428,22 @@ button:hover {
     height: 300px;
     margin-bottom: 20px;
 }
+
+.contact{
+    background-color: white;
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    padding: 10px;
+}
+
+
+
+.details{
+    flex: 1;
+}
+
+.address{
+    text-align: right;
+    flex: 1; 
+}
