@@ -201,17 +201,17 @@ document.addEventListener("alpine:init", () => {
             payForCart() {
                 this.pay(this.paymentAmount).then(result => {
                     if (this.paymentAmount == 0 && this.cartTotal === 0) {
-                        this.ErrorMessage = "Your cart is cleared, check your receipt!";
+                        this.ErrorMessage = "Your cart is cleared!";
                         setTimeout(() => this.ErrorMessage = '', 4000);
                     } else if (this.cartTotal == 0.00 && this.paymentAmount > 0) {
-                        this.ErrorMessage = "Your cart is empty, add item so you can make payment!";
+                        this.ErrorMessage = "Your cart is empty!";
                         setTimeout(() => this.ErrorMessage = '', 4000);
                     } else if (result.data.status == 'failure' && this.paymentAmount > 0) {
-                        this.ErrorMessage = result.data.message + " Sorry - that is not enough money!";
+                        this.ErrorMessage = result.data.message + " Sorry - Not enough money!";
                         setTimeout(() => this.ErrorMessage = '', 4000);
                     } else if (this.cartTotal > 0.00 && this.paymentAmount > this.cartTotal) {
                         const change = this.paymentAmount - this.cartTotal;
-                        this.message = `Payment received, but you have change of : R${change.toFixed(2)} Enjoy your Pizzas!`;
+                        this.message = `Payment received, and your change i : R${change.toFixed(2)} Enjoy your Pizzas!`;
                         this.HistoricalCart();
                         setTimeout(() => {
                             this.message = '';
@@ -222,7 +222,7 @@ document.addEventListener("alpine:init", () => {
                         this.fetchCart();
                         this.showHistoricalOrdersButton = true;
                     } else if (result.data.status == "success" && this.paymentAmount === this.cartTotal) {
-                        this.message = 'Payment received, Enjoy your Pizzas!';
+                        this.message = 'Payment Successful, Enjoy your Pizzas!';
                         this.HistoricalCart();
                         setTimeout(() => {
                             this.message = '';
@@ -233,7 +233,7 @@ document.addEventListener("alpine:init", () => {
                         this.fetchCart();
                         this.showHistoricalOrdersButton = true;
                     } else {
-                        this.ErrorMessage = "Sorry - you have to put amount to pay!";
+                        this.ErrorMessage = "Sorry - you have to put an amount to pay!";
                         setTimeout(() => this.ErrorMessage = '', 4000);
                     }
                 });
